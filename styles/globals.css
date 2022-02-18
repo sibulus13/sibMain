@@ -16,6 +16,16 @@ h1 {
     color: white;
 }
 
+h2 {
+    color: white;
+}
+
+li {
+    color:white;
+    font-size: 200%;
+    margin-right: 20%;
+}
+
 .body {
     flex:1;
     background-color: black;
@@ -28,16 +38,21 @@ h1 {
     gap:1%;
 }
 
-.container {
-    flex:3;
-    /* background-color: black; */
-    /* border-radius: 40%;
-    overflow:hidden */
+/* .mainpg {
 
+} */
+
+.intro_list {
+    text-align: left;
+    padding-left: 10%;
+}
+
+.intro_sentence {
+    text-align: left;
 }
 
 .main {
-    flex:3;
+    flex:1;
     background-color: black;
 }
 
@@ -54,7 +69,11 @@ h1 {
     gap: 2%;
 }
 
+/* .page {
+    flex:1;
+} */
+
 .profile-pic {
-    border-radius: 40%;
+    border-radius: 45%;
     overflow:hidden;
  }

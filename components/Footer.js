@@ -5,7 +5,7 @@ export default function Footer() {
     <>
       <footer className={styles.footer}>
         <h5 className={styles.footer_text}>
-          Copyright Michael Huang © 2021, Built with NextJS.
+          Copyright Michael Huang © 2022, Built with NextJS.
         </h5>
       </footer>
     </>
