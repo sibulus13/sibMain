@@ -1,15 +1,15 @@
-import { SocialIcon } from 'react-social-icons';
 import Contacts from './Contacts';
 import Header_Directory from './Header_Directory';
+import styles from './Header.module.css'
 
-export default function Header({ title }) {
+export default function Header() {
     return (
-        <div className='header'>
-            <div className='header-title'>
-                <h3>Michael 黄</h3>
-                <h4>🤓,🥔,🦝</h4>
+        <div className={styles.header}>
+            <div className={styles.title}>
+                <h1 className={styles.title_text}>Michael 黄</h1>
+                <h2 className={styles.title_emojis}>🤓,🥔,&🦝</h2>
             </div>
-            <div className='header-links'>
+            <div className={styles.links}>
                 <Header_Directory />
                 <Contacts />
             </div>

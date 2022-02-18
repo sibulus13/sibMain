@@ -1,0 +1,32 @@
+.header {
+  flex:1;
+  background-color: black;
+  display: flex;
+  align-items: baseline;
+  height: 30%; width: 100%;
+  border-bottom: 10px solid white; 
+}
+
+.links {
+  flex:3;
+  color: white;
+  text-indent: 1%;
+  gap: 2%;
+}
+
+.title {
+  flex:1;
+  text-align: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.title_text {
+  font: 100%, Arial, Helvetica, sans-serif;
+  color: purple;
+}
+
+.title_emojis {
+  font: 100%, Arial, Helvetica, sans-serif;
+  color: whitesmoke;
+}

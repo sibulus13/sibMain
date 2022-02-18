@@ -4,7 +4,9 @@ export default function Footer() {
   return (
     <>
       <footer className={styles.footer}>
-        Made with <img src="/netliheart.svg" alt="Netlify Logo" className={styles.logo} /> for you
+        <h5 className={styles.footer_text}>
+          Copyright Michael Huang © 2021, Built with NextJS.
+        </h5>
       </footer>
     </>
   )

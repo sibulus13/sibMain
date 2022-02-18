@@ -1,38 +1,60 @@
-.header {
-    border: 5px solid;
-    background-color: pink;
-    display: flex;
-    align-items: center;
+/* a:link, a:visited, a:hover, a:active { text-decoration: none; } */
+
+a:link { text-decoration: none; color:white;}
+
+a:visited { text-decoration: none; color:white;}
+
+a:hover { text-decoration: none; }
+
+a:active { text-decoration: none; color:white;}
+
+text {
+    color: white;    
 }
 
-.header-title {
-    flex:1;
-    text-align: center;
-}
-
-.header-links {
-    flex:2;
+h1 {
     color: white;
-    border: 1px solid;
-    text-indent: 1%;
 }
 
-.links {
-    border: 5px solid;
-    display: flex;
-    flex-wrap: nowrap;
-    overflow:hidden;
-    white-space: nowrap;
-    justify-content: space-evenly;
-    gap: 2%;
-}
-
-.link-text {
-    color: purple;
-    justify-content: space-evenly;
+.body {
+    flex:1;
+    background-color: black;
 }
 
 .contacts {
     justify-content: flex-end;
     display: flex;
+    margin-right: 9%;
+    gap:1%;
 }
+
+.container {
+    flex:3;
+    /* background-color: black; */
+    /* border-radius: 40%;
+    overflow:hidden */
+
+}
+
+.main {
+    flex:3;
+    background-color: black;
+}
+
+.layout {
+    flex: content;
+}
+
+.links {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow:hidden;
+    white-space: nowrap;
+    justify-content: space-around;
+    gap: 2%;
+}
+
+.profile-pic {
+    border-radius: 40%;
+    overflow:hidden;
+ }

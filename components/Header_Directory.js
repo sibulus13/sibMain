@@ -4,21 +4,21 @@ export default function Header_Directory() {
     return (
         <div
             className='links'>
-            <h5>
+            <h2>
                 <Link href="/About-me">
                     <a>About me</a>
                 </Link>
-            </h5>
-            <h5>
+            </h2>
+            <h2>
                 <Link href="/About-me">
-                    <a>Adventures</a>
+                    <a>Adventure</a>
                 </Link>
-            </h5>
-            <h5>
+            </h2>
+            <h2>
                 <Link href="/About-me">
-                    <a>Accomplishments</a>
+                    <a>Showcase</a>
                 </Link>
-            </h5>
+            </h2>
         </div>
     )
 }
