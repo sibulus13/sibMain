@@ -39,8 +39,10 @@ li {
 }
 
 .intro {
-    width: 40%;
+    width: 50%;
     margin: 0 auto;
+    /* justify-content: center;
+    justify-items: center; */
 }
 
 .intro_list {
@@ -88,7 +90,7 @@ li {
 }
 
 .profile_pic_container {
-    width: 25%;
+    width: 20%;
     margin: 0 auto;
     padding: 1%;
 }
