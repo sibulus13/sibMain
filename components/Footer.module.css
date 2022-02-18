@@ -2,8 +2,8 @@
   flex:1;
   color: white;
   background-color: black;
-  height: 30%; width: 100%;
-  border-top: 10px solid #eaeaea;
+  height: 5vh; width: 100%;
+  border-top: 2px solid white;
   display: flex;
   justify-content: center;
   align-items: center;

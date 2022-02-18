@@ -38,9 +38,10 @@ li {
     gap:1%;
 }
 
-/* .mainpg {
-
-} */
+.intro {
+    width: 40%;
+    margin: 0 auto;
+}
 
 .intro_list {
     text-align: left;
@@ -52,8 +53,14 @@ li {
 }
 
 .main {
-    flex:1;
+    /* flex:1; */
     background-color: black;
+    height: 80vh;
+}
+
+.main_pg {
+    /* vertical-align:middle; */
+    display: block; 
 }
 
 .layout {
@@ -69,11 +76,19 @@ li {
     gap: 2%;
 }
 
-/* .page {
+.page {
     flex:1;
-} */
+    justify-items: center;
+    align-items: center;
+}
 
 .profile-pic {
-    border-radius: 45%;
+    border-radius:45%;
     overflow:hidden;
- }
+}
+
+.profile_pic_container {
+    width: 25%;
+    margin: 0 auto;
+    padding: 1%;
+}

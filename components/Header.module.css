@@ -3,8 +3,8 @@
   background-color: black;
   display: flex;
   align-items: baseline;
-  height: 30%; width: 100%;
-  border-bottom: 10px solid white; 
+  height: 15vh; width: 100%;
+  border-bottom: 2px solid white; 
 }
 
 .links {
