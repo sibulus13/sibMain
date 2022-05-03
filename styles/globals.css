@@ -18,6 +18,11 @@ h1 {
 
 h2 {
     color: white;
+    font-size: 2vh;
+}
+
+td {
+    color:white;
 }
 
 li {
@@ -31,52 +36,32 @@ li {
     background-color: black;
 }
 
-.contacts {
-    justify-content: flex-end;
-    display: flex;
-    margin-right: 9%;
-    gap:1%;
-}
 
 .intro {
     width: 50%;
     margin: 0 auto;
     /* justify-content: center;
     justify-items: center; */
-}
+}    
 
 .intro_list {
     text-align: left;
     padding-left: 10%;
-}
+}    
 
 .intro_sentence {
     text-align: left;
-}
+}    
 
 .main {
-    /* flex:1; */
     background-color: black;
+    /* height: max-content; */
     height: 80vh;
-}
-
-.main_pg {
-    /* vertical-align:middle; */
-    display: block; 
-}
+}    
 
 .layout {
     flex: content;
-}
-
-.links {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow:hidden;
-    white-space: nowrap;
-    justify-content: space-around;
-    gap: 2%;
-}
+}    
 
 .page {
     flex:1;
@@ -92,5 +77,11 @@ li {
 .profile_pic_container {
     width: 20%;
     margin: 0 auto;
-    padding: 1%;
+    padding: 2%;
+}
+
+.table-cell {
+    border: solid white 2px;
+    height:100%;
+    width: 100%;
 }

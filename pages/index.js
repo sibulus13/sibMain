@@ -5,13 +5,15 @@ import profilePic from '../public/me.jpg'
 import Image from 'next/image'
 import Link from 'next/link'
 
+
+
 export default function Home() {
   return (
     <div className="main_pg">
-      <Head>
+      {/* <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <div className='profile_pic_container'>
+      </Head> */}
+      {/* <div className='profile_pic_container'>
         <Image
           src={profilePic}
           className='profile-pic'
@@ -21,14 +23,17 @@ export default function Home() {
       </div>
       <div className='intro'>
         <h1 className='intro_sentence'>
-          Hi, I'm Michael Huang, and I am an
+          Hi, I'm
         </h1>
+        <title className='intro_sentence'>
+          Michael Huang
+        </title>
         <ul className='intro_list'>
           <li>adventure seeker,</li>
           <li>extroverted introvert,</li>
           <li>and engineering and computer science graduate.</li>
         </ul>
-      </div>
+      </div> */}
     </div>
   )
 }
