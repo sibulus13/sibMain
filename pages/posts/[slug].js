@@ -9,6 +9,7 @@ import { sync } from 'glob'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
 import Image from 'next/image'
+import path from 'path'
 
 import styles from './slug.module.css'
 
@@ -50,6 +51,19 @@ export default function Post({ post }) {
       </div>
     </div>
   )
+}
+
+export async function getStaticPaths() {
+  const files = fs.readdirSync(path.join('posts'))
+  const posts = files.map(filename => {
+    const markdownWithMeta = fs.readFileSync(path.join('posts', filename), 'utf-8')
+    // const { data: frontMatter } = matter(markdownWithMeta)
+    return `/posts/${filename.split('.')[0]}`
+  })
+  return {
+    posts,
+    fallback: false
+  }
 }
 
 export async function getServerSideProps({ params }) {
