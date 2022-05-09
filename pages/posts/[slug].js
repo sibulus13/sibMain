@@ -9,7 +9,6 @@ import { sync } from 'glob'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
 import Image from 'next/image'
-import path from 'path'
 
 import styles from './slug.module.css'
 
@@ -61,12 +60,12 @@ export async function getStaticPaths() {
     return `/posts/${filename.split('.')[0]}`
   })
   return {
-    posts,
+    paths: posts,
     fallback: false
   }
 }
 
-export async function getServerSideProps({ params }) {
+export async function getStaticProps({ params }) {
   const { slug } = params
   const { content, frontmatter } = await getArticleFromSlug(slug)
   const mdxSource = await serialize(content)
