@@ -1,9 +1,9 @@
-[build]
+# [build]
   # command = "npm run build"
   # Default build command.
-  command = "echo 'default context'"
+ # command = "echo 'default context'"
 
-  publish = ".next"
+#  publish = ".next"
 
 # [[plugins]]
 #  package = "@netlify/plugin-nextjs"
