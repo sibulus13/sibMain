@@ -1,13 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import Router from 'next/router'
 
-// import { serialize } from 'next-mdx-remote/serialize'
-// import { MDXRemote } from 'next-mdx-remote'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-// import SyntaxHighlighter from 'react-syntax-highlighter'
 
 import styles from './Adventures.module.css'
 

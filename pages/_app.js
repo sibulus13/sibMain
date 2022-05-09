@@ -12,9 +12,7 @@ function Application({ Component, pageProps }) {
   return (
     <div className='main'>
       <Layout>
-        <ErrorBoundary
-        // FallbackComponent={ErrorFallback}
-        >
+        <ErrorBoundary>
           <Component {...pageProps} />
         </ErrorBoundary>
       </Layout>
