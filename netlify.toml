@@ -1,8 +1,5 @@
-# [build]
-  # command = "npm run build"
-  # Default build command.
- # command = "echo 'default context'"
-
+ [build]
+   command = "next build"
 #  publish = ".next"
 
 # [[plugins]]
