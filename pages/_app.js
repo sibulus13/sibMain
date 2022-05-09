@@ -11,17 +11,17 @@ let src = "/vecteezy_animation-of-fog-or-smoke-moving-on-white-background-closeu
 function Application({ Component, pageProps }) {
   return (
     <div className='main'>
-      <ErrorBoundary
-      // FallbackComponent={ErrorFallback}
-      >
-        <Layout>
+      <Layout>
+        <ErrorBoundary
+        // FallbackComponent={ErrorFallback}
+        >
           <Component {...pageProps} />
-        </Layout>
-        <video autoPlay muted loop className='video'>
-          <source src={src} type="video/mp4" />
-          Your browser does not support the video tag or format
-        </video>
-      </ErrorBoundary>
+        </ErrorBoundary>
+      </Layout>
+      <video autoPlay muted loop className='video'>
+        <source src={src} type="video/mp4" />
+        Your browser does not support the video tag or format
+      </video>
     </div >
   )
 }
