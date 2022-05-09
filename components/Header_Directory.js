@@ -6,14 +6,14 @@ export default function Header_Directory() {
     return (
         <div
             className={styles.header_links}>
-            <h2>
+            {/* <h2>
                 <Link href="/About-me">
                     <a>About me</a>
                 </Link>
-            </h2>
-            <h2>
+            </h2> */}
+            <h2 >
                 <Link href="/Adventures">
-                    <a>Adventures</a>
+                    <a className='normal_color'>Adventures</a>
                 </Link>
             </h2>
             <h2>

@@ -6,6 +6,10 @@ export default function Contacts() {
         <div className={styles.header_contacts}>
             <SocialIcon
                 network='facebook'
+                // className={styles.socialIcon}
+                // className='socialIcon'
+                // className={SocialIcon}
+                // color="currentColor"
                 url='https://www.facebook.com/sibulus0/'
                 bgColor='lightgrey'
                 fgColor='black'

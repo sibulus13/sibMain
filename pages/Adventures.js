@@ -1,51 +1,64 @@
-// import TableElement from '@components/TableElement'
-
-// import profilePic from '../public/me.jpg'
 import Link from 'next/link'
 import Image from 'next/image'
 import Router from 'next/router'
 
-let ele = {
-  imgs: [],
-  title: 'title'
-}
+// import { serialize } from 'next-mdx-remote/serialize'
+// import { MDXRemote } from 'next-mdx-remote'
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+// import SyntaxHighlighter from 'react-syntax-highlighter'
 
-let data = [ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele, ele,]
-let folders = ['adventure1', 'adventure2', 'adventure3']
+import styles from './Adventures.module.css'
 
-export default function Adventures() {
+export default function Adventures({ posts }) {
   return (
-    <div className="container-table ">
-      <h1>Adventure Pg</h1>
-      <table>
-        {folders.map((ele, id) => {
-          return (
-            <Link
-              // href={`/post/${encodeURIComponent(ele)}`}
-              href={{
-                pathname: `/Post`,
-                query: { Post: ele },
-              }}
-            >
-              <td className='table-cell'>
-                <div className='profile_pic_container'>
-                  <Image
-                    src={`/adventures/${ele}/1.jpg`}
-                    className='profile-pic'
-                    layout='intrinsic'
-                    width={500}
-                    height={500}
-                  />
-                </div>
-                <caption>title {id}</caption>
-              </td>
-            </Link>
-          )
-        })}
-      </table>
+    <div className={styles.post_column}>
+      {/* <h1>Adventure Pg</h1> */}
+      {posts.map((post, index) => (
+        <Link href={'/posts/' + post.slug} passHref key={index}>
+        <div className={styles.post_container}>
+          <div className={styles.post_text}>
+            <p className={styles.post_title}>{post.frontMatter.title}</p>
+            <hr className={styles.post_break_line}></hr>
+            <p className={styles.post_description}>{post.frontMatter.description}</p>
+            <p className={styles.post_date}>
+              <small className={styles.post_date}>{post.frontMatter.date}</small>
+            </p>
+          </div>
+          <div className={styles.post_img_container}>
+            <Image
+              src={post.frontMatter.thumbnailUrl}
+              // className={}
+              alt="thumbnail"
+              // width='150vw'
+              // height='150vh'
+              layout='fill'
+              objectFit="cover"
+            />
+          </div>
+        </div>
+        </Link>
+      ))}
     </div>)
 }
 
-// export async function getStaticProps() {
+export const getStaticProps = async () => {
+  const files = fs.readdirSync(path.join('posts'))
 
-// }
+  const posts = files.map(filename => {
+    const markdownWithMeta = fs.readFileSync(path.join('posts', filename), 'utf-8')
+    const { data: frontMatter } = matter(markdownWithMeta)
+    return {
+      frontMatter,
+      slug: filename.split('.')[0]
+    }
+  })
+
+  console.log(posts)
+  return {
+    props: {
+      posts
+    }
+  }
+}
