@@ -74,3 +74,11 @@
     height: 100%;
     position: relative;
 }
+
+.normal_color {
+    color: black;
+}
+
+.inverted_color {
+    color: white;
+}

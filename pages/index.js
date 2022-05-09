@@ -1,15 +1,13 @@
 export default function Home() {
   return (
-    <div className="container">
-      <br className="linebreak"></br>
-      <h1> Hello world! </h1>
-      <h1> I am Michael Huang, as an </h1>
-      <ul className='intro_list'>
-        <li>🦝 adventure seeker 🦝,</li>
-        <li>🥔 extroverted introvert 🥔,</li>
-        <li>🤓 and engineering and computer science graduate 🤓.</li>
-      </ul>
-      <h1>my love language is demonstrating new ways to improve accessibility through automation, so lets get in touch if you think we have chemistry!</h1>
-    </div>
+    <div className="main">
+      <div className={"container"}>
+        <h1 className='centered very_big_text'> 👋🌎 </h1>
+        <hr className='break_line'></hr>
+        <h1 className='big_text'> As an: </h1>
+        <a className='centered medium_text'>🦝 adventure seeker 🦝 <br></br>🥔 extroverted introvert 🥔<br></br> 🤓 engineering and computer science graduate 🤓</a>
+        <br></br>
+        <a className='centered big_text'> I am passionate about exploring novel environments, experiencing new occurences, and improving accessibility through automation. <br></br><br></br> Hit me up if you think we have chemistry!</a>
+      </div>    </div>
   )
 }

@@ -9,10 +9,7 @@ export default function Header() {
         <div className={styles.header}>
             <Link href="/">
                 <div className={styles.title}>
-                    <h1 className={styles.title_text}>
-                        <a>Michael 黄</a>
-                    </h1>
-                    {/* <h2 className={styles.title_emojis}>🦝 🥔 🤓</h2> */}
+                    <h1 className={styles.title_text}>Michael 黄</h1>
                 </div>
             </Link>
             <div className={styles.links}>

@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import styles from './Header.module.css'
 
-
 export default function Header_Directory() {
     return (
         <div
@@ -11,16 +10,16 @@ export default function Header_Directory() {
                     <a>About me</a>
                 </Link>
             </h2> */}
-            <h2 >
-                <Link href="/Adventures">
-                    <a className='normal_color'>Adventures</a>
-                </Link>
-            </h2>
-            <h2>
-                <Link href="/Showcase">
-                    <a>Showcase</a>
-                </Link>
-            </h2>
+            <Link href="/Adventures">
+                <div className={styles.normal_background}>
+                    <h2 className={styles.normal_color}> Adventures</h2>
+                </div>
+            </Link>
+            <Link href="/Showcase">
+                <div className={styles.normal_background}>
+                    <h2 className={styles.normal_color}> Showcases</h2>
+                </div>
+            </Link>
         </div>
     )
 }
