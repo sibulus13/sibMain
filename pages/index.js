@@ -1,14 +1,37 @@
+import { motion, AnimatePresence } from "framer-motion"
+
 export default function Home() {
+
   return (
     <div className="main">
-      <div className={"container"}>
-        <h1 className='centered very_big_text'> 👋🌎 </h1>
-        <hr className='break_line'></hr>
-        <h1 className='big_text'> As an: </h1>
-        <a className='centered medium_text'>🦝 adventure seeker 🦝 <br></br>🥔 extroverted introvert 🥔<br></br> 🤓 engineering and computer science graduate 🤓</a>
-        <br></br>
-        <a className='centered big_text'> I am interested in exploring novel environments, experiencing new occurences, and improving accessibility through automation. <br></br><br></br> Hit me up if you think we have chemistry!</a>
-      </div>
-    </div>
+      <AnimatePresence>
+        <motion.div
+          className={"container"}
+          key={'container'}
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0, }}
+          exit={{ opacity: 0, y: 100, }}
+          transition={{ duration: 2 }}
+        >
+          <div className="row">
+            <motion.h1
+              className='centered very_big_text'
+              animate={{ rotate: [null, 5, 10, 5, 0, -5, -10, -5, 0] }}
+              transition={{ ease: 'linear', duration: 1.5, repeat: Infinity, repeatDelay: 7, delay: 2 }}
+            > 👋</motion.h1>
+            <motion.h1
+              className='centered very_big_text'
+              animate={{ rotate: 360 }}
+              transition={{ ease: 'linear', duration: 70, repeat: Infinity }}
+            > 🌎 </motion.h1>
+          </div>
+          <hr className='break_line'></hr>
+          <h1 className='big_text'> As an: </h1>
+          <a className='centered medium_text'>🦝 adventure seeker 🦝 <br></br>🥔 extroverted introvert 🥔<br></br> 🤓 engineering and computer science graduate 🤓</a>
+          <br></br>
+          <a className='centered big_text'> I am interested in exploring diverse environments, seeking novel experiences, and improving accessibility through automation. <br></br><br></br> Lets collaborate on more ways to better our world!</a>
+        </motion.div>
+      </AnimatePresence>
+    </div >
   )
 }

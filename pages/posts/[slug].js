@@ -26,17 +26,17 @@ export default function Post({ post }) {
       {/* <div className={styles.post_text}> */}
       <div className={styles.header_container}>
         <p className={styles.post_title}>{post.frontmatter.title}</p>
-        <div className={styles.post_img_container}>
+        {/* <div className={styles.post_img_container}>
           <Image
             src={post.frontmatter.thumbnailUrl}
             // className={}
             alt="thumbnail"
             width='250vw'
             height='300vh'
-          // layout='responsive'
-          // objectFit="cover"
+            layout='responsive'
+            // objectFit="cover"
           />
-        </div>
+        </div> */}
       </div>
       <hr className={styles.post_break_line}></hr>
       <p className={styles.post_description}>{post.frontmatter.description}</p>

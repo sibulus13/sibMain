@@ -74,6 +74,12 @@ li {
     text-align: left;
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .main {
     margin: 0%;
     display: flex;

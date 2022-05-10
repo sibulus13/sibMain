@@ -5,13 +5,15 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-import styles from './Adventures.module.css'
+import styles from './Showcase.module.css'
 
-export default function Adventures({ posts }) {
+export default function Showcase({ posts }) {
   return (
     <div className={styles.post_column}>
-      {/* <h1>Adventure Pg</h1> */}
-      {posts.map((post, index) => (
+        <h1>Skills</h1>
+        <h1>Show previous titles with sublinks to descriptive properties, ex: Lifeguard > observant & safety & preventative</h1>
+        
+      {/* {posts.map((post, index) => (
         <Link href={'/posts/' + post.slug} passHref key={index}>
           <div className={styles.post_container}>
             <div className={styles.post_text}>
@@ -35,24 +37,24 @@ export default function Adventures({ posts }) {
             </div>
           </div>
         </Link>
-      ))}
+      ))} */}
     </div>)
 }
 
-export const getStaticProps = async () => {
-  const files = fs.readdirSync(path.join('posts'))
-  const posts = files.map(filename => {
-    const markdownWithMeta = fs.readFileSync(path.join('posts', filename), 'utf-8')
-    const { data: frontMatter } = matter(markdownWithMeta)
-    return {
-      frontMatter,
-      slug: filename.split('.')[0]
-    }
-  })
+// export const getStaticProps = async () => {
+//   const files = fs.readdirSync(path.join('posts'))
+//   const posts = files.map(filename => {
+//     const markdownWithMeta = fs.readFileSync(path.join('posts', filename), 'utf-8')
+//     const { data: frontMatter } = matter(markdownWithMeta)
+//     return {
+//       frontMatter,
+//       slug: filename.split('.')[0]
+//     }
+//   })
 
-  return {
-    props: {
-      posts
-    }
-  }
-}
+//   return {
+//     props: {
+//       posts
+//     }
+//   }
+// }

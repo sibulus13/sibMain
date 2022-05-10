@@ -1,3 +1,5 @@
+import { motion } from "framer-motion"
+
 import Link from 'next/link'
 import styles from './Header.module.css'
 
@@ -11,14 +13,30 @@ export default function Header_Directory() {
                 </Link>
             </h2> */}
             <Link href="/Adventures">
-                <div className={styles.normal_background}>
+                <motion.div
+                    className={styles.normal_background}
+                    whileHover={{
+                        scale: 1.1
+                    }}
+                    whileTap={{
+                        scale: 0.8
+                    }}
+                >
                     <h2 className={styles.normal_color}> Adventures</h2>
-                </div>
+                </motion.div>
             </Link>
             <Link href="/Showcase">
-                <div className={styles.normal_background}>
-                    <h2 className={styles.normal_color}> Showcases</h2>
-                </div>
+                <motion.div
+                    className={styles.normal_background}
+                    whileHover={{
+                        scale: 1.1
+                    }}
+                    whileTap={{
+                        scale: 0.8
+                    }}
+                >
+                    <h2 className={styles.normal_color}> Showcase</h2>
+                </motion.div>
             </Link>
         </div>
     )
