@@ -1,3 +1,8 @@
+/*  SCROLLBAR */
+::-webkit-scrollbar {
+    width: 1px;
+}
+
 a:link,
 a:visited,
 a:hover,

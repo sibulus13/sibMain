@@ -33,7 +33,7 @@ function Application({ Component, pageProps, router }) {
               initial="hidden" // Set the initial state to variants.hidden
               animate="enter" // Animated state to variants.enter
               exit="exit" // Exit state (used later) to variants.exit
-              transition={{ type: 'linear', duration: 2 }} // Set the transition to linear
+              transition={{ type: 'linear', duration: 1 }} // Set the transition to linear
             >
               <Component {...pageProps}/>
             </motion.main>
