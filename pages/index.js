@@ -3,15 +3,11 @@ import { motion, AnimatePresence } from "framer-motion"
 export default function Home() {
 
   return (
-    <div className="main">
-      <AnimatePresence>
+      <motion.div className="main"
+        key={'homepg'}
+      >
         <motion.div
           className={"container"}
-          key={'container'}
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0, }}
-          exit={{ opacity: 0, y: 100, }}
-          transition={{ duration: 2 }}
         >
           <div className="row">
             <motion.h1
@@ -31,7 +27,6 @@ export default function Home() {
           <br></br>
           <a className='centered big_text'> I am interested in exploring diverse environments, seeking novel experiences, and improving accessibility through automation. <br></br><br></br> Lets collaborate on more ways to better our world!</a>
         </motion.div>
-      </AnimatePresence>
-    </div >
+      </motion.div >
   )
 }

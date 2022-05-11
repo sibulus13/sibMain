@@ -9,7 +9,9 @@ import styles from './Adventures.module.css'
 
 export default function Adventures({ posts }) {
   return (
-    <div className={styles.post_column}>
+    <div 
+    className={styles.post_column}
+    key='adventurepg'>
       {/* <h1>Adventure Pg</h1> */}
       {posts.map((post, index) => (
         <Link href={'/posts/' + post.slug} passHref key={index}>

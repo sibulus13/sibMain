@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
 import Link from 'next/link'
 import styles from './Header.module.css'
@@ -7,11 +7,6 @@ export default function Header_Directory() {
     return (
         <div
             className={styles.header_links}>
-            {/* <h2>
-                <Link href="/About-me">
-                    <a>About me</a>
-                </Link>
-            </h2> */}
             <Link href="/Adventures">
                 <motion.div
                     className={styles.normal_background}

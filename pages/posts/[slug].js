@@ -22,7 +22,9 @@ const components = {
 export default function Post({ post }) {
   // console.log(post.source)
   return (
-    <div className={styles.post_container}>
+    <div 
+    className={styles.post_container}
+    key={`post${post}pg`}>
       {/* <div className={styles.post_text}> */}
       <div className={styles.header_container}>
         <p className={styles.post_title}>{post.frontmatter.title}</p>
