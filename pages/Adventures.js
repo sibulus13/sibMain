@@ -11,38 +11,38 @@ export default function Adventures({ posts }) {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
-        <h1 className={styles.normal_color}>Adventures</h1>
+        <h1 className={styles.normal_color}> 冒险 </h1>
         {/* <br className={[styles.normal_color, styles.break_line]}></br> */}
       </div>
-    <div
-      className={styles.post_column}
-      key='adventurepg'
-    >
-      {posts.map((post, index) => (
-        <Link href={'/posts/' + post.slug} passHref key={index}>
-          <div className={styles.post_container}>
-            <div className={styles.post_text}>
-              <p className={styles.post_title}>{post.frontMatter.title}</p>
-              <hr className={styles.post_break_line}></hr>
-              <p className={styles.post_description}>{post.frontMatter.description}</p>
-              <p className={styles.post_date}>
-                <small className={styles.post_date}>{post.frontMatter.date}</small>
-              </p>
-            </div>
-            <div className={styles.post_img_container}>
-              <Image
-                src={post.frontMatter.thumbnailUrl}
-                // className={}
-                alt="thumbnail"
-                // width='150vw'
-                // height='150vh'
-                layout='fill'
-                objectFit="cover"
+      <div
+        className={styles.post_column}
+        key='adventurepg'
+      >
+        {posts.map((post, index) => (
+          <Link href={'/posts/' + post.slug} passHref key={index}>
+            <div className={styles.post_container}>
+              <div className={styles.post_text}>
+                <p className={styles.post_title}>{post.frontMatter.title}</p>
+                <hr className={styles.post_break_line}></hr>
+                <p className={styles.post_description}>{post.frontMatter.description}</p>
+                <p className={styles.post_date}>
+                  <small className={styles.post_date}>{post.frontMatter.date}</small>
+                </p>
+              </div>
+              <div className={styles.post_img_container}>
+                <Image
+                  src={post.frontMatter.thumbnailUrl}
+                  // className={}
+                  alt="thumbnail"
+                  // width='150vw'
+                  // height='150vh'
+                  layout='fill'
+                  objectFit="cover"
                 />
+              </div>
             </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        ))}
       </div>
     </div>)
 }
