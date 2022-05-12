@@ -6,8 +6,17 @@ import path from 'path'
 import matter from 'gray-matter'
 
 import styles from './Adventures.module.css'
+import { getDates, getTags } from 'lib/utils'
+import { useState } from 'react'
 
 export default function Adventures({ posts }) {
+  let tags = getTags(posts)
+  let dates = getDates(posts)
+
+  console.log(tags, dates)
+
+  const [filter, setFilter] = useState({ date: [], tags: [] })
+
   return (
     <div className={styles.container}>
       <div className={styles.title}>

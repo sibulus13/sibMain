@@ -7,14 +7,35 @@ import matter from 'gray-matter'
 
 import styles from './Showcase.module.css'
 
+let skillTree = {
+  'Me': {
+    'Engineering': {
+      'MATLAB': {},
+      'SolidWorks': {},
+      'PLC': {},
+      'LabVIEW': {},
+    },
+    'Programming': {
+      'Python': {},
+      'JavaScript': {
+        'React Native': {},
+        'NextJS': {},
+      },
+      'HTML': {},
+      'CSS': {},
+    },
+  }
+}
+
 export default function Showcase({ posts }) {
   return (
-    <div className={styles.post_column}>
-      <div>
-        <h1>Roles</h1>
-        <h1>Show previous titles with sublinks to descriptive properties, ex: Lifeguard > observant & safety & preventative</h1>
-
+    <div className={styles.container}>
+      <div className={styles.title}>
+        <h1 className={styles.normal_color}> 展示 </h1>
       </div>
-
+      <div
+        className={styles.post_column}
+      >
+      </div>
     </div>)
 }
