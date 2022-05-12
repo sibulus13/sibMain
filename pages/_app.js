@@ -1,8 +1,5 @@
-// add bootstrap css 
-// import 'bootstrap/dist/css/bootstrap.css'
 import { motion, AnimatePresence } from "framer-motion"
-// import Header from './Header'
-// import Router, { withRouter } from 'next/router'
+import Document from "next/document"
 
 import '@styles/globals.css'
 import Layout from '../components/layout'
@@ -18,13 +15,14 @@ const variants = {
 function Application({ Component, pageProps, router }) {
   // fitbitAuthenticate()
   console.log(router.pathname)
+  // const video = Document.
   return (
     <div className='main'>
       <Layout>
         <ErrorBoundary>
           <AnimatePresence
             exitBeforeEnter
-            onExitComplete={() => window.scrollTo(0, 0)}
+            // onExitComplete={() => window.scrollTo(0, 0)}
             initial={true}
           >
             <motion.main
