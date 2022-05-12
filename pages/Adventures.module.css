@@ -81,14 +81,15 @@
 }
 
 .title {
-    /* transform: rotateZ(270deg); */
-    writing-mode: vertical-lr;
-    text-orientation: upright;
+    transform: rotateZ(270deg);
+    /* writing-mode: vertical-lr; */
+    /* text-orientation: upright; */
     position: absolute;
-    top: 19.5vh;
+    top: 23%;
     left: 1%;
-    border: 6px right solid black;
-    /* height: auto; */
+    margin: 0%;
+    padding: 0%;
+    border-right: 2px right solid black;
 }
 
 .container {
