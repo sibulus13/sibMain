@@ -9,10 +9,15 @@ import styles from './Adventures.module.css'
 
 export default function Adventures({ posts }) {
   return (
-    <div 
-    className={styles.post_column}
-    key='adventurepg'>
-      {/* <h1>Adventure Pg</h1> */}
+    <div className={styles.container}>
+      <div className={styles.title}>
+        <h1 className={styles.normal_color}>Adventures</h1>
+        {/* <br className={[styles.normal_color, styles.break_line]}></br> */}
+      </div>
+    <div
+      className={styles.post_column}
+      key='adventurepg'
+    >
       {posts.map((post, index) => (
         <Link href={'/posts/' + post.slug} passHref key={index}>
           <div className={styles.post_container}>
@@ -33,11 +38,12 @@ export default function Adventures({ posts }) {
                 // height='150vh'
                 layout='fill'
                 objectFit="cover"
-              />
+                />
             </div>
           </div>
         </Link>
       ))}
+      </div>
     </div>)
 }
 

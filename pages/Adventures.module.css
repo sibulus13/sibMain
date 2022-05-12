@@ -11,6 +11,7 @@
 .post_break_line {
     margin: 0%;
     padding: 0%;
+    /* width: 100%; */
     /* line-height: 40%;     */
 }
 
@@ -20,6 +21,7 @@
     align-items: center;
     justify-items: center;
     gap: 4%;
+    /* grid-column: 2,4; */
 }
 
 .post_container {
@@ -65,7 +67,6 @@
 }
 
 .post_img_container {
-    /* border: 1mm solid; */
     width: 50%;
     height: 100%;
     position: relative;
@@ -77,4 +78,29 @@
 
 .inverted_color {
     color: white;
+}
+
+.title {
+    /* transform: rotateZ(270deg); */
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    position: absolute;
+    top: 19.5vh;
+    left: 1%;
+    border: 6px right solid black;
+    /* height: auto; */
+}
+
+.container {
+    /* display:flex; */
+    /* flex-direction: row; */
+    /* display: grid; */
+}
+
+.break_line {
+    color: black;
+    margin: 0%;
+    padding: 0%;
+    width: 100%;
+    height: 100%;
 }

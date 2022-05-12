@@ -1,6 +1,6 @@
 /*  SCROLLBAR */
 ::-webkit-scrollbar {
-    width: 1px;
+    width: 0px;
 }
 
 a:link,
