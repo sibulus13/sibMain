@@ -1,61 +1,82 @@
-import useEmblaCarousel from 'embla-carousel-react'
-import React, { useEffect } from 'react'
-// import Autoplay from 'embla-carousel-autoplay'
+import Link from "next/link";
+import Image from "next/image";
 
-import Link from 'next/link'
-import Image from 'next/image'
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
-import styles from './Showcase.module.css'
+import styles from "./Adventures.module.css";
+import { getDates, getTags } from "lib/utils";
+import { useState } from "react";
 
-let skillTree = {
-  'Me': {
-    'Engineering': {
-      'MATLAB': {},
-      'SolidWorks': {},
-      'PLC': {},
-      'LabVIEW': {},
-    },
-    'Programming': {
-      'Python': {},
-      'JavaScript': {
-        'React Native': {},
-        'NextJS': {},
-      },
-      'HTML': {},
-      'CSS': {},
-    },
-  }
-}
-
-// you can implement flashy graphics later, get your first post out
-
-export default function Showcase({ posts }) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
-  useEffect(() => {
-    if (emblaApi) {
-      // Embla API is ready
-    }
-  }, [emblaApi])
-
+export default function Adventures({ posts }) {
+  let tags = getTags(posts);
+  let dates = getDates(posts);
+  // console.log(tags, dates);
+  const [filter, setFilter] = useState({ date: [], tags: [] });
 
   return (
     <div className={styles.container}>
       <div className={styles.title}>
-        <h1 className={styles.normal_color}> 展示 </h1>
+        <h1 className={styles.normal_color}> 冒险 </h1>
+        {/* <br className={[styles.normal_color, styles.break_line]}></br> */}
       </div>
-      <div
-        className={styles.post_column}
-      >
-        <div className={styles.embla} ref={emblaRef}>
-          <div className={styles.embla__container}>
-            <div className={styles.mbla__slide}>Slide 1</div>
-            <div className={styles.bla__slide}>Slide 2</div>
-            <div className={styles.embla__slide}>Slide 3</div>
-          </div>
-        </div>
+      <div className={styles.post_column} key="adventurepg">
+        {posts.map((post, index) => (
+          <Link href={"/showcase/" + post.slug} passHref key={index}>
+            <div className={styles.post_container}>
+              <div className={styles.post_text}>
+                <p className={styles.post_title}>{post.frontMatter.title}</p>
+                <hr className={styles.post_break_line}></hr>
+                <p className={styles.post_description}>
+                  {post.frontMatter.description}
+                </p>
+                <p className={styles.post_date}>
+                  <small className={styles.post_date}>
+                    {post.frontMatter.date}
+                  </small>
+                </p>
+              </div>
+              <div className={styles.post_img_container}>
+                <Image
+                  src={post.frontMatter.thumbnailUrl}
+                  // className={}
+                  alt="thumbnail"
+                  width='100%'
+                  height='100%'
+                  layout="fill"
+                  objectFit="scale-down"
+                />
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
-    </div>)
+    </div>
+  );
 }
+
+export const getStaticProps = async () => {
+  let folder = path.join("posts", "showcase");
+  console.log(folder);
+  // let posts = []
+  const files = fs.readdirSync(folder);
+  // console.log(files);
+  const posts = files.map((filename) => {
+    const markdownWithMeta = fs.readFileSync(
+      path.join("posts", "showcase", filename),
+      "utf-8"
+    );
+    const { data: frontMatter } = matter(markdownWithMeta);
+    return {
+      frontMatter,
+      slug: filename.split(".")[0],
+    };
+  });
+
+  return {
+    props: {
+      posts,
+    },
+  };
+};

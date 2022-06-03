@@ -42,10 +42,10 @@ export default function Adventures({ posts }) {
                   src={post.frontMatter.thumbnailUrl}
                   // className={}
                   alt="thumbnail"
-                  // width='150vw'
-                  // height='150vh'
+                  width='100%'
+                  height='100%'
                   layout="fill"
-                  objectFit="cover"
+                  objectFit="scale-down"
                 />
               </div>
             </div>

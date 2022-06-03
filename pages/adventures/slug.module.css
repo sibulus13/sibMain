@@ -18,7 +18,7 @@
 }
 
 .post_container {
-  width: 80vw;
+  width: 60vw;
   padding: 5%;
   display: flex;
   flex-direction: column;
@@ -63,11 +63,19 @@
   color: darkgrey;
   font-family: Playfair Display;
   font-size: large;
-  font-style: italic; 
+  font-style: italic;
 }
 
 .subtitle {
-    text-align: center;
-    color: white;
-    font-size: small;
+  text-align: center;
+  color: white;
+  font-size: small;
+  margin: 2%;
+}
+
+.img_container {
+  width: 80%;
+  margin: auto auto 0% auto ;
+  /* height: 100%; */
+  position: relative;
 }

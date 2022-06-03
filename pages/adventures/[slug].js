@@ -17,7 +17,17 @@ const components = {
       <ins className={styles.inline_link}>{props.children}</ins>
     </Link>
   ),
-  Image: (props) => <Image {...props} />,
+  Image: (props) => (
+    <div className={styles.img_container}>
+    <Image
+      height="1%"
+      width="1%"
+      alt="thumbnail"
+      layout="responsive"
+      {...props}
+    />
+    </div>
+  ),
   h1: (props) => <h1 className={styles.post_text}>{props.children}</h1>,
   h2: (props) => <h2 className={styles.post_text}>{props.children}</h2>,
   h3: (props) => <h3 className={styles.post_text}>{props.children}</h3>,
