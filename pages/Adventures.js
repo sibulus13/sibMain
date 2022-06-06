@@ -57,14 +57,15 @@ export default function Adventures({ posts }) {
 }
 
 export const getStaticProps = async () => {
-  let folder = path.join("posts", "adventures");
-  console.log(folder);
+  // let folder = path.join("posts", "adventures");
+  let folder = 'adventures'
+  // console.log(folder);
   // let posts = []
   const files = fs.readdirSync(folder);
   // console.log(files);
   const posts = files.map((filename) => {
     const markdownWithMeta = fs.readFileSync(
-      path.join("posts", "adventures", filename),
+      path.join("adventures", filename),
       "utf-8"
     );
     const { data: frontMatter } = matter(markdownWithMeta);
