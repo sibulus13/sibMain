@@ -23,7 +23,7 @@ export default function Adventures({ posts }) {
       </div>
       <div className={styles.post_column} key="adventurepg">
         {posts.map((post, index) => (
-          <Link href={"/posts/" + post.slug} passHref key={index}>
+          <Link href={"/adventures/" + post.slug} passHref key={index}>
             <div className={styles.post_container}>
               <div className={styles.post_text}>
                 <p className={styles.post_title}>{post.frontMatter.title}</p>

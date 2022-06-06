@@ -8,7 +8,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import styles from "./slug.module.css";
-import testComponent from "@components/testComponent";
 
 const components = {
   p: (props) => <p className={styles.post_text}>{props.children}</p>,
@@ -19,13 +18,13 @@ const components = {
   ),
   Image: (props) => (
     <div className={styles.img_container}>
-    <Image
-      height="1%"
-      width="1%"
-      alt="thumbnail"
-      layout="responsive"
-      {...props}
-    />
+      <Image
+        height="1%"
+        width="1%"
+        alt="thumbnail"
+        layout="responsive"
+        {...props}
+      />
     </div>
   ),
   h1: (props) => <h1 className={styles.post_text}>{props.children}</h1>,
@@ -37,27 +36,14 @@ const components = {
 export default function Post({ post }) {
   return (
     <div className={styles.post_container}>
-      {/* <div className={styles.post_text}> */}
       <div className={styles.header_container}>
         <p className={styles.post_title}>{post.frontmatter.title}</p>
-        {/* <div className={styles.post_img_container}>
-          <Image
-            src={post.frontmatter.thumbnailUrl}
-            // className={}
-            alt="thumbnail"
-            width='250vw'
-            height='300vh'
-            layout='responsive'
-            // objectFit="cover"
-          />
-        </div> */}
       </div>
       <hr className={styles.post_break_line}></hr>
       <p className={styles.post_description}>{post.frontmatter.description}</p>
       <p className={styles.post_date}>
         <small className={styles.post_date}>{post.frontmatter.date}</small>
       </p>
-      {/* </div> */}
       <div>
         <MDXRemote {...post.source} components={components} />
       </div>
@@ -66,16 +52,15 @@ export default function Post({ post }) {
 }
 
 export async function getStaticPaths() {
-  const advPath = path.join("posts", "adventures");
-  const advFiles = fs.readdirSync(path.join("posts", "adventures"));
+  const dir = "adventures";
+  const advFiles = fs.readdirSync(dir);
   console.log(advFiles);
   const posts = advFiles.map((filename) => {
     const markdownWithMeta = fs.readFileSync(
-      path.join("posts", "adventures", filename),
+      path.join("adventures", filename),
       "utf-8"
     );
-    // const { data: frontMatter } = matter(markdownWithMeta)
-    return `/posts/${filename.split(".")[0]}`;
+    return `/adventures/${filename.split(".")[0]}`;
   });
   return {
     paths: posts,
@@ -85,7 +70,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
-  console.log(`param`, params);
   const type = "adventures";
   const { content, frontmatter } = await getArticleFromSlug(slug);
   const mdxSource = await serialize(content);
@@ -100,10 +84,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getArticleFromSlug(slug) {
-  const articleDir = path.join("posts", "adventures");
-  // const advFiles = fs.readdirSync(path.join("posts", "adventures"));
-  // const showFiles = fs.readdirSync(path.join("posts", "showcase"));
-  const articlePath = path.join("posts", "adventures", `${slug}.mdx`);
+  const articlePath = path.join("adventures", `${slug}.mdx`);
   const source = fs.readFileSync(articlePath);
   const { content, data } = matter(source);
 
