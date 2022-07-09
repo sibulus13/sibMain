@@ -44,7 +44,7 @@ export default function Adventures({ posts }) {
                   </small>
                 </p>
               </div>
-              {post.frontMatter.thumbnailUrl &&
+              {post.frontMatter.thumbnailUrl && (
                 <div className={styles.post_img_container}>
                   <Image
                     src={post.frontMatter.thumbnailUrl}
@@ -56,10 +56,16 @@ export default function Adventures({ posts }) {
                     objectFit="scale-down"
                   />
                 </div>
-              }{" "}
+              )}
             </div>
           </Link>
         ))}
+        <Link
+          href="https://chengjiemichaelhua.wixsite.com/sibulus/what-i-do"
+          // className={styles.inline_text}
+        >
+          <h3>Click here to see some notable Pre-grad projects!</h3>
+        </Link>
       </div>
     </div>
   );
