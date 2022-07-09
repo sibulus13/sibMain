@@ -24,13 +24,13 @@ export default function Adventures({ posts }) {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
-        <h1 className={styles.normal_color}> 冒险 </h1>
+        <h1 className={styles.normal_color}> 展示 </h1>
         {/* <br className={[styles.normal_color, styles.break_line]}></br> */}
       </div>
       <div className={styles.post_column} key="adventurepg">
         <Filter tags={tags} tag_dict={tag_dict} set_tags={setFilter}></Filter>
         {posts.map((post, index) => (
-          <Link href={"/adventures/" + post.slug} passHref key={index}>
+          <Link href={"/showcase/" + post.slug} passHref key={index}>
             <div className={styles.post_container}>
               <div className={styles.post_text}>
                 <p className={styles.post_title}>{post.frontMatter.title}</p>
@@ -44,8 +44,8 @@ export default function Adventures({ posts }) {
                   </small>
                 </p>
               </div>
-              <div className={styles.post_img_container}>
-                {post.frontMatter.thumbnailUrl && (
+              {post.frontMatter.thumbnailUrl &&
+                <div className={styles.post_img_container}>
                   <Image
                     src={post.frontMatter.thumbnailUrl}
                     // className={}
@@ -55,8 +55,8 @@ export default function Adventures({ posts }) {
                     layout="fill"
                     objectFit="scale-down"
                   />
-                )}{" "}
-              </div>
+                </div>
+              }{" "}
             </div>
           </Link>
         ))}
@@ -67,14 +67,14 @@ export default function Adventures({ posts }) {
 
 export const getStaticProps = async () => {
   // let folder = path.join("posts", "adventures");
-  let folder = "adventures";
+  let folder = "showcase";
   // console.log(folder);
   // let posts = []
   const files = fs.readdirSync(folder);
   // console.log(files);
   const posts = files.map((filename) => {
     const markdownWithMeta = fs.readFileSync(
-      path.join("adventures", filename),
+      path.join("showcase", filename),
       "utf-8"
     );
     const { data: frontMatter } = matter(markdownWithMeta);

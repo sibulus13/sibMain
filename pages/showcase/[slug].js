@@ -9,6 +9,8 @@ import Link from "next/link";
 
 import styles from "./slug.module.css";
 
+// https://chengjiemichaelhua.wixsite.com/sibulus/what-i-do
+
 const components = {
   p: (props) => <p className={styles.post_text}>{props.children}</p>,
   a: (props) => (
