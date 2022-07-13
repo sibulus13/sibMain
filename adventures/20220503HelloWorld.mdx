@@ -4,6 +4,9 @@ date: "May 03, 2022"
 description: My first post aka manual testing
 thumbnailUrl: "/ironrings.png"
 tags: ["Origin", "Manual Testing"]
+published: true
+# carousel_dir:
+
 ---
 
 import Image from "next/image";
@@ -32,8 +35,14 @@ export const fileName = "/unsettledTomTemplate.jpg";
 <div>
   <Image
     src={"/unsettledTomTemplate.jpg"}
-  />
-  ###### Unsettled Tom Meme Template
+    height="1%"
+    width="1%"
+    alt="thumbnail"
+    layout="responsive"
+/>
+
+###### Unsettled Tom Meme Template
+
 </div>
 
 </div>

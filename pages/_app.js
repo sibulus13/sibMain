@@ -4,6 +4,7 @@ import "@styles/globals.css";
 import Layout from "../components/layout";
 import ErrorBoundary from "../components/ErrorBoundary";
 import { useRef } from "react";
+// import { MDXProvider } from "@mdx-js/react";
 
 let src =
   "/vecteezy_animation-of-fog-or-smoke-moving-on-white-background-closeup-shot_1797524.mov";
@@ -24,40 +25,42 @@ function Application({ Component, pageProps, router }) {
   };
   // const video = Document.
   return (
-    <div className="main">
-      <Layout>
-        <ErrorBoundary>
-          <AnimatePresence
-            exitBeforeEnter
-            // onExitComplete={() => window.scrollTo(0, 0)}
-            initial={true}
-          >
-            <motion.main
-              key={router.route}
-              variants={variants} // Pass the variant object into Framer Motion
-              initial="hidden" // Set the initial state to variants.hidden
-              animate="enter" // Animated state to variants.enter
-              exit="exit" // Exit state (used later) to variants.exit
-              transition={{ type: "linear", duration: 1 }} // Set the transition to linear
+    // <MDXProvider>
+      <div className="main">
+        <Layout>
+          <ErrorBoundary>
+            <AnimatePresence
+              exitBeforeEnter
+              // onExitComplete={() => window.scrollTo(0, 0)}
+              initial={true}
             >
-              <Component {...pageProps} />
-            </motion.main>
-          </AnimatePresence>
-        </ErrorBoundary>
-      </Layout>
-      <video
-        autoPlay
-        muted
-        loop
-        className="video"
-        ref={videoRef}
-        onCanPlay={() => setPlayBack()}
-        on
-      >
-        <source src={src} type="video/mp4" />
-        Your browser does not support the video tag or format
-      </video>
-    </div>
+              <motion.main
+                key={router.route}
+                variants={variants} // Pass the variant object into Framer Motion
+                initial="hidden" // Set the initial state to variants.hidden
+                animate="enter" // Animated state to variants.enter
+                exit="exit" // Exit state (used later) to variants.exit
+                transition={{ type: "linear", duration: 1 }} // Set the transition to linear
+              >
+                <Component {...pageProps} />
+              </motion.main>
+            </AnimatePresence>
+          </ErrorBoundary>
+        </Layout>
+        <video
+          autoPlay
+          muted
+          loop
+          className="video"
+          ref={videoRef}
+          onCanPlay={() => setPlayBack()}
+          on
+        >
+          <source src={src} type="video/mp4" />
+          Your browser does not support the video tag or format
+        </video>
+      </div>
+    // </MDXProvider>
   );
 }
 

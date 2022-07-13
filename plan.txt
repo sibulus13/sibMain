@@ -1,5 +1,0 @@
-pgs
-    main (about me)
-    
-    adventures (blogs)
-    accomplishments (projects)

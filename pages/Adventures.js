@@ -11,6 +11,7 @@ import { getDates, getTags } from "lib/utils";
 import { useState } from "react";
 
 export default function Adventures({ posts }) {
+  // console.log(posts)
   let tags = getTags(posts);
   let dates = getDates(posts);
   let tag_dict = {};
@@ -29,45 +30,51 @@ export default function Adventures({ posts }) {
       </div>
       <div className={styles.post_column} key="adventurepg">
         <Filter tags={tags} tag_dict={tag_dict} set_tags={setFilter}></Filter>
-        {posts.map((post, index) => (
-          <Link href={"/adventures/" + post.slug} passHref key={index}>
-            <div className={styles.post_container}>
-              <div className={styles.post_text}>
-                <p className={styles.post_title}>{post.frontMatter.title}</p>
-                <hr className={styles.post_break_line}></hr>
-                <p className={styles.post_description}>
-                  {post.frontMatter.description}
-                </p>
-                <p className={styles.post_date}>
-                  <small className={styles.post_date}>
-                    {post.frontMatter.date}
-                  </small>
-                </p>
-              </div>
-              <div className={styles.post_img_container}>
-                {post.frontMatter.thumbnailUrl && (
-                  <Image
-                    src={post.frontMatter.thumbnailUrl}
-                    // className={}
-                    alt="thumbnail"
-                    width="100%"
-                    height="100%"
-                    layout="fill"
-                    objectFit="scale-down"
-                  />
-                )}{" "}
-              </div>
-            </div>
-          </Link>
-        ))}
+        {posts.map((post, index) => {
+          if (post.frontMatter.published) {
+            return (
+              <Link href={"/adventures/" + post.slug} passHref key={index}>
+                <div className={styles.post_container}>
+                  <div className={styles.post_text}>
+                    <p className={styles.post_title}>
+                      {post.frontMatter.title}
+                    </p>
+                    <hr className={styles.post_break_line}></hr>
+                    <p className={styles.post_description}>
+                      {post.frontMatter.description}
+                    </p>
+                    <p className={styles.post_date}>
+                      <small className={styles.post_date}>
+                        {post.frontMatter.date}
+                      </small>
+                    </p>
+                  </div>
+                  {post.frontMatter.thumbnailUrl && (
+                    <div className={styles.post_img_container}>
+                      <Image
+                        src={post.frontMatter.thumbnailUrl}
+                        // className={}
+                        alt="thumbnail"
+                        width="100%"
+                        height="100%"
+                        layout="fill"
+                        objectFit="scale-down"
+                      />
+                    </div>
+                  )}
+                </div>
+              </Link>
+            );
+          }
+        })}
       </div>
     </div>
   );
 }
 
 export const getStaticProps = async () => {
-  // let folder = path.join("posts", "adventures");
   let folder = "adventures";
+  // let folder = path.join("posts", "adventures");
   // console.log(folder);
   // let posts = []
   const files = fs.readdirSync(folder);

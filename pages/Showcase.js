@@ -29,42 +29,50 @@ export default function Adventures({ posts }) {
       </div>
       <div className={styles.post_column} key="adventurepg">
         <Filter tags={tags} tag_dict={tag_dict} set_tags={setFilter}></Filter>
-        {posts.map((post, index) => (
-          <Link href={"/showcase/" + post.slug} passHref key={index}>
-            <div className={styles.post_container}>
-              <div className={styles.post_text}>
-                <p className={styles.post_title}>{post.frontMatter.title}</p>
-                <hr className={styles.post_break_line}></hr>
-                <p className={styles.post_description}>
-                  {post.frontMatter.description}
-                </p>
-                <p className={styles.post_date}>
-                  <small className={styles.post_date}>
-                    {post.frontMatter.date}
-                  </small>
-                </p>
-              </div>
-              {post.frontMatter.thumbnailUrl && (
-                <div className={styles.post_img_container}>
-                  <Image
-                    src={post.frontMatter.thumbnailUrl}
-                    // className={}
-                    alt="thumbnail"
-                    width="100%"
-                    height="100%"
-                    layout="fill"
-                    objectFit="scale-down"
-                  />
+        {posts.map((post, index) => {
+          if (post.frontMatter.published) {
+            return (
+              <Link href={"/showcase/" + post.slug} passHref key={index}>
+                <div className={styles.post_container}>
+                  <div className={styles.post_text}>
+                    <p className={styles.post_title}>
+                      {post.frontMatter.title}
+                    </p>
+                    <hr className={styles.post_break_line}></hr>
+                    <p className={styles.post_description}>
+                      {post.frontMatter.description}
+                    </p>
+                    <p className={styles.post_date}>
+                      <small className={styles.post_date}>
+                        {post.frontMatter.date}
+                      </small>
+                    </p>
+                  </div>
+                  {post.frontMatter.thumbnailUrl && (
+                    <div className={styles.post_img_container}>
+                      (
+                      <Image
+                        src={post.frontMatter.thumbnailUrl}
+                        // className={}
+                        alt="thumbnail"
+                        width="100%"
+                        height="100%"
+                        layout="fill"
+                        objectFit="scale-down"
+                      />
+                      )
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          </Link>
-        ))}
+              </Link>
+            );
+          }
+        })}
         <Link
           href="https://chengjiemichaelhua.wixsite.com/sibulus/what-i-do"
           // className={styles.inline_text}
         >
-          <h3>Click here to see some notable Pre-grad projects!</h3>
+          <h3>Click here to see some of my notable pre grad projects!</h3>
         </Link>
       </div>
     </div>
