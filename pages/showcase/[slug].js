@@ -23,6 +23,7 @@ const components = {
       <Image
         height="1%"
         width="1%"
+        quality={100}
         alt="thumbnail"
         layout="responsive"
         {...props}

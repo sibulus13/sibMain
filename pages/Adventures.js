@@ -57,6 +57,7 @@ export default function Adventures({ posts }) {
                         alt="thumbnail"
                         width="100%"
                         height="100%"
+                        quality = {100}
                         layout="fill"
                         objectFit="scale-down"
                       />

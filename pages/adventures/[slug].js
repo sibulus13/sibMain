@@ -26,7 +26,14 @@ const components = {
   ),
   Image: (props) => (
     <div className={styles.img_container}>
-      <Image {...props} />
+      <Image
+        height="1%"
+        width="1%"
+        quality={100}
+        alt="thumbnail"
+        layout="responsive"
+        {...props}
+      />
     </div>
   ),
   h1: (props) => <h1 className={styles.post_text}>{props.children}</h1>,
@@ -47,6 +54,9 @@ export default function Post(props) {
   // const Component = useMemo(() => getMDXComponent(code), [code])
   return (
     <div className={styles.post_container}>
+      <p className={styles.post_date}>
+        <small className={styles.post_date}>{post.frontmatter.date}</small>
+      </p>
       <div className={styles.header_container}>
         <p className={styles.post_title}>{post.frontmatter.title}</p>
       </div>
@@ -69,6 +79,7 @@ export default function Post(props) {
                   src={url}
                   height="100vh"
                   width="100vw"
+                  quality={100}
                   alt={carousel_caption(url)}
                   layout="responsive"
                 ></Image>
@@ -79,9 +90,6 @@ export default function Post(props) {
         </div>
       )}
       <hr className={styles.post_break_line}></hr>
-      <p className={styles.post_date}>
-        <small className={styles.post_date}>{post.frontmatter.date}</small>
-      </p>
       <div>
         <MDXRemote {...post.source} components={components} />
       </div>

@@ -48,21 +48,19 @@ export default function Adventures({ posts }) {
                       </small>
                     </p>
                   </div>
-                    <div className={styles.post_img_container}>
-                  {post.frontMatter.thumbnailUrl && (
-                      (
+                  <div className={styles.post_img_container}>
+                    {post.frontMatter.thumbnailUrl && (
                       <Image
                         src={post.frontMatter.thumbnailUrl}
-                        // className={}
+                        quality={100}
                         alt="thumbnail"
                         width="100%"
                         height="100%"
                         layout="fill"
                         objectFit="scale-down"
                       />
-                      )
-                      )}
-                    </div>
+                    )}
+                  </div>
                 </div>
               </Link>
             );
