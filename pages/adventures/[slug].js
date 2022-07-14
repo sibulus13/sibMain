@@ -33,11 +33,11 @@ const components = {
   h2: (props) => <h2 className={styles.post_text}>{props.children}</h2>,
   h3: (props) => <h3 className={styles.post_text}>{props.children}</h3>,
   h6: (props) => <h6 className={styles.subtitle}>{props.children}</h6>,
-  Carousel: (props) => (
-    <div>
-      <Media_Carousel {...props}></Media_Carousel>
-    </div>
-  ),
+  // Carousel: (props) => (
+  //   <div>
+  //     <Media_Carousel {...props}></Media_Carousel>
+  //   </div>
+  // ),
 };
 
 export default function Post(props) {
@@ -50,17 +50,19 @@ export default function Post(props) {
       <div className={styles.header_container}>
         <p className={styles.post_title}>{post.frontmatter.title}</p>
       </div>
-      <hr className={styles.post_break_line}></hr>
       <p className={styles.post_description}>{post.frontmatter.description}</p>
-      <p className={styles.post_date}>
-        <small className={styles.post_date}>{post.frontmatter.date}</small>
-      </p>
-      <div>
-        <MDXRemote {...post.source} components={components} />
-      </div>
       {carousel.length > 0 && (
         <div>
-          <Carousel axis="horizontal" autoPlay={true}>
+          <Carousel
+            axis="horizontal"
+            autoPlay={true}
+            centerMode={true}
+            centerSlidePercentage={60}
+            infiniteLoop={true}
+            interval={5000}
+            showIndicators={false}
+            stopOnHover={true}
+          >
             {carousel.map((url) => (
               <div>
                 <Image
@@ -76,6 +78,13 @@ export default function Post(props) {
           </Carousel>
         </div>
       )}
+      <hr className={styles.post_break_line}></hr>
+      <p className={styles.post_date}>
+        <small className={styles.post_date}>{post.frontmatter.date}</small>
+      </p>
+      <div>
+        <MDXRemote {...post.source} components={components} />
+      </div>
     </div>
   );
 }
@@ -155,7 +164,7 @@ export async function getArticleFromSlug(slug) {
       thumbnailUrl: data.thumbnailUrl,
       tags: data.tags,
       readingTime: readingTime(source).text,
-      
+
       ...data,
     },
   };
