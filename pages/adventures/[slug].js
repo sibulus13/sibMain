@@ -67,9 +67,9 @@ export default function Post(props) {
               <div>
                 <Image
                   src={url}
-                  height="1%"
-                  width="1%"
-                  alt="thumbnail"
+                  height="100vh"
+                  width="100vw"
+                  alt={carousel_caption(url)}
                   layout="responsive"
                 ></Image>
                 <p>{carousel_caption(url)}</p>
