@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 
 export default function Home() {
-
+  const HAND_WAVE_UNIT = 8
   return (
       <motion.div className="main"
         key={'homepg'}
@@ -12,8 +12,8 @@ export default function Home() {
           <div className="row">
             <motion.h1
               className='centered very_big_text'
-              animate={{ rotate: [null, 5, 10, 5, 0, -5, -10, -5, 0] }}
-              transition={{ ease: 'linear', duration: 1.5, repeat: Infinity, repeatDelay: 7, delay: 2 }}
+              animate={{ rotate: [null, HAND_WAVE_UNIT, 2*HAND_WAVE_UNIT, HAND_WAVE_UNIT, 0, -HAND_WAVE_UNIT, -2*HAND_WAVE_UNIT, -HAND_WAVE_UNIT, 0] }}
+              transition={{ ease: 'linear', duration: 1.5, repeat: Infinity, repeatDelay: 5, delay: 2 }}
             > 👋</motion.h1>
             <motion.h1
               className='centered very_big_text'
