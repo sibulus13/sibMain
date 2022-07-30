@@ -1,13 +1,18 @@
 // import styles from './Header.module.css'
 
+import { useState } from "react";
+
 export default function Filter(props) {
   console.log(props);
-  let tags = props.tags
-  let tag_dict = props.tag_dict
-  let set_tags = props.set_tags
+  let tags = props.tags;
+  let tag_dict = props.tag_dict;
+  let set_tags = props.set_tags;
+
+  const [filter, setFilter] = useState(tag_dict);
+
   return (
     <div className={""}>
-      {props.tags.map((tag) => {
+      {props.tags.map((tag, id) => {
         return (
           <div>
             <input
@@ -16,12 +21,13 @@ export default function Filter(props) {
               name={tag}
               defaultChecked={true}
               // checked={props.tag_dict[tag]}
-              onChange={e => {
-                let new_tag_dict = tag_dict
-                new_tag_dict[tag] = !tag_dict[tag]
-                set_tags(new_tag_dict)
-                console.log(e, new_tag_dict)
-                handleOnChange(e)
+              onChange={(e) => {
+                console.log(e, tag_dict);
+                // let new_tag_dict = tag_dict
+                // new_tag_dict[tag] = !tag_dict[tag]
+                tag_dict[e.target.name] = e.target.checked;
+                set_tags(tag_dict);
+                // handleOnChange(e)
               }}
             ></input>
             <label for={tag}>{tag}</label>
@@ -33,5 +39,5 @@ export default function Filter(props) {
 }
 
 const handleOnChange = (e) => {
-  console.log(e, e.target.checked)
-}
+  console.log(e, e.target.checked);
+};

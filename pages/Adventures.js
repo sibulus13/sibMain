@@ -14,6 +14,9 @@ export default function Adventures({ posts }) {
   // console.log(posts)
   let tags = getTags(posts);
   let dates = getDates(posts);
+
+  // const tagItems = [...new Set(tags.map(val => val))]
+  // console.log(tagItems)
   let tag_dict = {};
   tags.forEach((e) => {
     tag_dict[e] = true;
@@ -29,7 +32,7 @@ export default function Adventures({ posts }) {
         {/* <br className={[styles.normal_color, styles.break_line]}></br> */}
       </div>
       <div className={styles.post_column} key="adventurepg">
-        {/* <Filter tags={tags} tag_dict={tag_dict} set_tags={setFilter}></Filter> */}
+        <Filter tags={tags} tag_dict={tag_dict} set_tags={setFilter.bind(this)}></Filter>
         {posts.map((post, index) => {
           if (post.frontMatter.published) {
             return (
