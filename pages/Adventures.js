@@ -32,7 +32,7 @@ export default function Adventures({ posts }) {
         {/* <br className={[styles.normal_color, styles.break_line]}></br> */}
       </div>
       <div className={styles.post_column} key="adventurepg">
-        <Filter tags={tags} tag_dict={tag_dict} set_tags={setFilter.bind(this)}></Filter>
+        {/* <Filter tags={tags} tag_dict={tag_dict} set_tags={setFilter.bind(this)}></Filter> */}
         {posts.map((post, index) => {
           if (post.frontMatter.published) {
             return (
