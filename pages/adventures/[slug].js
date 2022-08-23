@@ -82,6 +82,7 @@ export default function Post(props) {
                   quality={100}
                   alt={carousel_caption(url)}
                   layout="responsive"
+                  objectFit="contain"
                 ></Image>
                 <p>{carousel_caption(url)}</p>
               </div>
