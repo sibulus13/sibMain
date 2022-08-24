@@ -8,49 +8,17 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
-// import { bundleMDX } from "mdx-bundler";
-// import { getMDXComponent } from "mdx-bundler/client";
-import { useMemo } from "react";
-
-// import Media_Carousel from "@components/Carousel";
 import styles from "./slug.module.css";
 import { carousel_caption } from "lib/utils";
+import { useState } from "react";
+// import { components } from 'lib/constants'
 
-const components = {
-  p: (props) => <p className={styles.post_text}>{props.children}</p>,
-  a: (props) => (
-    <Link href={props.href}>
-      <ins className={styles.inline_link}>{props.children}</ins>
-    </Link>
-  ),
-  Image: (props) => (
-    <div className={styles.img_container}>
-      <Image
-        height="1%"
-        width="1%"
-        quality={100}
-        alt="thumbnail"
-        layout="responsive"
-        {...props}
-      />
-    </div>
-  ),
-  h1: (props) => <h1 className={styles.post_text}>{props.children}</h1>,
-  h2: (props) => <h2 className={styles.post_text}>{props.children}</h2>,
-  h3: (props) => <h3 className={styles.post_text}>{props.children}</h3>,
-  h6: (props) => <h6 className={styles.subtitle}>{props.children}</h6>,
-  // Carousel: (props) => (
-  //   <div>
-  //     <Media_Carousel {...props}></Media_Carousel>
-  //   </div>
-  // ),
-};
+const TYPE = 'adventures'
 
 export default function Post(props) {
   let post = props.post;
   let carousel = props.carousel;
-  console.log(carousel);
+  // console.log(carousel);
   // const Component = useMemo(() => getMDXComponent(code), [code])
   return (
     <div className={styles.post_container}>
@@ -67,7 +35,7 @@ export default function Post(props) {
             axis="horizontal"
             autoPlay={true}
             centerMode={true}
-            centerSlidePercentage={60}
+            centerSlidePercentage={70}
             infiniteLoop={true}
             interval={5000}
             showIndicators={false}
@@ -99,15 +67,15 @@ export default function Post(props) {
 }
 
 export async function getStaticPaths() {
-  const dir = "adventures";
+  const dir = TYPE;
   const advFiles = fs.readdirSync(dir);
   // console.log(advFiles);
   const posts = advFiles.map((filename) => {
     const markdownWithMeta = fs.readFileSync(
-      path.join("adventures", filename),
+      path.join(TYPE, filename),
       "utf-8"
     );
-    return `/adventures/${filename.split(".")[0]}`;
+    return `/${TYPE}/${filename.split(".")[0]}`;
   });
   return {
     paths: posts,
@@ -117,7 +85,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
-  const type = "adventures";
 
   // mdx-bundler
   // const postData = await getArticleFromSlug(slug);
@@ -129,7 +96,7 @@ export async function getStaticProps({ params }) {
   let files = [];
   if (frontmatter.carousel_dir) {
     // grab name of all files in carousel_dir
-    let dir = "adventures";
+    let dir = TYPE;
     files = fs.readdirSync(path.join("public", dir, frontmatter.carousel_dir));
     // console.log(files);
     files = files.map((file) => `/${dir}/${frontmatter.carousel_dir}/${file}`);
@@ -148,7 +115,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getArticleFromSlug(slug) {
-  const articlePath = path.join("adventures", `${slug}.mdx`);
+  const articlePath = path.join(TYPE, `${slug}.mdx`);
   const source = fs.readFileSync(articlePath);
 
   // // mdxbundler
@@ -178,3 +145,33 @@ export async function getArticleFromSlug(slug) {
     },
   };
 }
+
+export const components = {
+  p: (props) => <p className={styles.post_text}>{props.children}</p>,
+  a: (props) => (
+    <Link href={props.href}>
+      <ins className={styles.inline_link}>{props.children}</ins>
+    </Link>
+  ),
+  Image: (props) => (
+    <div className={styles.img_container}>
+      <Image
+        height="1%"
+        width="1%"
+        quality={100}
+        alt="thumbnail"
+        layout="responsive"
+        {...props}
+      />
+    </div>
+  ),
+  h1: (props) => <h1 className={styles.post_text}>{props.children}</h1>,
+  h2: (props) => <h2 className={styles.post_text}>{props.children}</h2>,
+  h3: (props) => <h3 className={styles.post_text}>{props.children}</h3>,
+  h6: (props) => <h6 className={styles.subtitle}>{props.children}</h6>,
+  // Carousel: (props) => (
+  //   <div>
+  //     <Media_Carousel {...props}></Media_Carousel>
+  //   </div>
+  // ),
+};

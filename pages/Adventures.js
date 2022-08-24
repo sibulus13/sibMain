@@ -14,16 +14,23 @@ export default function Adventures({ posts }) {
   // console.log(posts)
   let tags = getTags(posts);
   let dates = getDates(posts);
+  posts = Array.from(posts).reverse()
+  console.log(posts)
 
   // const tagItems = [...new Set(tags.map(val => val))]
   // console.log(tagItems)
   let tag_dict = {};
   tags.forEach((e) => {
-    tag_dict[e] = true;
+    tag_dict[JSON.stringify(e)] = true;
   });
 
   // console.log(tags, dates);
+  console.log(tag_dict);
   const [filter, setFilter] = useState(tag_dict);
+
+  function handleOnChange(e, tag) {
+    console.log(e.target.checked, tag);
+  }
 
   return (
     <div className={styles.container}>
@@ -33,6 +40,24 @@ export default function Adventures({ posts }) {
       </div>
       <div className={styles.post_column} key="adventurepg">
         {/* <Filter tags={tags} tag_dict={tag_dict} set_tags={setFilter.bind(this)}></Filter> */}
+        {/* {tags.map((tag, index) => {
+          return (
+            <label>
+              {" "}
+              {tag}
+              <input
+                type="checkbox"
+                id={tag}
+                name={tag}
+                label={tag}
+                defaultChecked={true}
+                onChange={(e) => {
+                  handleOnChange(e, tag);
+                }}
+              ></input>
+            </label>
+          );
+        })} */}
         {posts.map((post, index) => {
           if (post.frontMatter.published) {
             return (
@@ -48,7 +73,7 @@ export default function Adventures({ posts }) {
                     </p>
                     <p className={styles.post_date}>
                       <small className={styles.post_date}>
-                        {post.frontMatter.date}
+                        {post.frontMatter.last_updated_date || post.frontMatter.date}
                       </small>
                     </p>
                   </div>
@@ -60,7 +85,7 @@ export default function Adventures({ posts }) {
                         alt="thumbnail"
                         width="100%"
                         height="100%"
-                        quality = {100}
+                        quality={100}
                         layout="fill"
                         objectFit="scale-down"
                       />
