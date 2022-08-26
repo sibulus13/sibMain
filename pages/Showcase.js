@@ -14,13 +14,6 @@ export default function Adventures({ posts }) {
   let tags = getTags(posts);
   let dates = getDates(posts);
   posts = Array.from(posts).reverse()
-  let tag_dict = {};
-  tags.forEach((e) => {
-    tag_dict[e] = true;
-  });
-
-  // console.log(tags, dates);
-  const [filter, setFilter] = useState(tag_dict);
 
   return (
     <div className={styles.container}>

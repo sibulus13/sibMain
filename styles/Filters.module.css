@@ -1,0 +1,26 @@
+.filterContainer {
+    grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Extra info! You can use this for even grid gaps */
+    /* grid-gap: 6px; */
+    width: 50vw;
+    padding: 1% 2%;  
+    /* justify-content: left; */
+    /* align-items:left; */
+}
+
+.gridItem {
+    /* align-self: center; */
+}
+
+.filterElementLabel {
+    float:right;
+    color: white;
+}
+
+
+.gridItem:hover {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+}

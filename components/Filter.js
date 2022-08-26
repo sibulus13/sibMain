@@ -1,43 +1,78 @@
-// import styles from './Header.module.css'
-
 import { useState } from "react";
+import styles from "@styles/Filters.module.css";
+
+/*
+* Filter component for updating state change of selected tags using boolean array
+* https://stackoverflow.com/questions/72029810/next-js-checkbox-select-all
+Filter based on:
+Location
+Activity
+Topic
+
+*/
 
 export default function Filter(props) {
-  console.log(props);
-  let tags = props.tags;
-  let tag_dict = props.tag_dict;
-  let set_tags = props.set_tags;
+  // console.log(props);
+  const [checkedState, setCheckedState] = useState(
+    new Array(props.tags.length).fill(true)
+  );
 
-  const [filter, setFilter] = useState(tag_dict);
+  /**
+   * handles change
+   * */
+  const handleOnCheckChange = (position) => {
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+    // console.log(updatedCheckedState);
+    setCheckedState(updatedCheckedState);
+    props.setTags(updatedCheckedState);
+  };
+
+  /*
+   *filled all checkboxes' states with `Check All` value
+   */
+  const handleChangeAll = () => {
+    let state;
+    if (checkedState.every((e) => e === true)) {
+      state = false;
+    } else state = true;
+    const updatedCheckedState = new Array(checkedState.length).fill(state);
+    setCheckedState(updatedCheckedState);
+    props.setTags(updatedCheckedState);
+  };
 
   return (
-    <div className={""}>
-      {props.tags.map((tag, id) => {
+    <div className={styles.filterContainer}>
+      {props.tags.map((tag, index) => {
         return (
-          <div>
-            <input
-              type="checkbox"
-              id={tag}
-              name={tag}
-              defaultChecked={true}
-              // checked={props.tag_dict[tag]}
-              onChange={(e) => {
-                console.log(e, tag_dict);
-                // let new_tag_dict = tag_dict
-                // new_tag_dict[tag] = !tag_dict[tag]
-                tag_dict[e.target.name] = e.target.checked;
-                set_tags(tag_dict);
-                // handleOnChange(e)
-              }}
-            ></input>
-            <label for={tag}>{tag}</label>
+          <div className="gridItem">
+            <label className={styles.filterElementLabel}>
+              {tag}
+              <input
+                type="checkbox"
+                id={tag}
+                key={index}
+                name={tag}
+                value={tag}
+                checked={checkedState[index]}
+                onChange={() => handleOnCheckChange(index)}
+              ></input>
+            </label>
           </div>
         );
-      })}{" "}
+      })}
+      <div className="call">
+        <label for="checkall" className={styles.filterElementLabel}>
+          {checkedState.every((e) => e === true) ? "Uncheck All" : "Check All"}
+          <input
+            type="checkbox"
+            name="checkall"
+            checked={checkedState.every((value) => value)}
+            onChange={() => handleChangeAll()}
+          />
+        </label>
+      </div>
     </div>
   );
 }
-
-const handleOnChange = (e) => {
-  console.log(e, e.target.checked);
-};
