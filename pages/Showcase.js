@@ -13,6 +13,7 @@ import { useState } from "react";
 export default function Adventures({ posts }) {
   let tags = getTags(posts);
   let dates = getDates(posts);
+  posts = Array.from(posts).reverse()
   let tag_dict = {};
   tags.forEach((e) => {
     tag_dict[e] = true;

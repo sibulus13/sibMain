@@ -7,8 +7,12 @@ import matter from "gray-matter";
 
 import Filter from "@components/Filter";
 import styles from "./Adventures.module.css";
-import { getDates, getTags } from "lib/utils";
+import { filter_include_tags, getDates, getTags } from "lib/utils";
 import { useState } from "react";
+
+// function handleOnChange(e) {
+//   console.log(e);
+// }
 
 export default function Adventures({ posts }) {
   // console.log(posts)
@@ -27,10 +31,19 @@ export default function Adventures({ posts }) {
   // console.log(tags, dates);
   console.log(tag_dict);
   const [filter, setFilter] = useState(tag_dict);
+  const [checkedState, setCheckedState] = useState(
+    new Array(tags.length).fill(true)
+  );
 
-  function handleOnChange(e, tag) {
-    console.log(e.target.checked, tag);
-  }
+  const handleOnChange = (position) => {
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+    console.log(updatedCheckedState)
+    setCheckedState(updatedCheckedState);
+    //update total
+    // updateTotal(updatedCheckedState);
+  };
 
   return (
     <div className={styles.container}>
@@ -40,26 +53,27 @@ export default function Adventures({ posts }) {
       </div>
       <div className={styles.post_column} key="adventurepg">
         {/* <Filter tags={tags} tag_dict={tag_dict} set_tags={setFilter.bind(this)}></Filter> */}
-        {/* {tags.map((tag, index) => {
+        {tags.map((tag, index) => {
+          // https://stackoverflow.com/questions/72029810/next-js-checkbox-select-all
           return (
             <label>
-              {" "}
               {tag}
               <input
                 type="checkbox"
                 id={tag}
+                key = {index}
                 name={tag}
-                label={tag}
-                defaultChecked={true}
-                onChange={(e) => {
-                  handleOnChange(e, tag);
-                }}
+                value={tag}
+                // defaultChecked={true}
+                // onKeyUp={(e) => {console.log(e)}}
+                checked = {checkedState[index]}
+                onChange={()=>handleOnChange(index)}
               ></input>
             </label>
           );
-        })} */}
+        })}
         {posts.map((post, index) => {
-          if (post.frontMatter.published) {
+          if (post.frontMatter.published && filter_include_tags(post.frontMatter.tags, tags, checkedState)) {
             return (
               <Link href={"/adventures/" + post.slug} passHref key={index}>
                 <div className={styles.post_container}>
