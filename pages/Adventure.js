@@ -1,14 +1,13 @@
-// 展示
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Posts_layout from "layout/Posts_layout";
 
-const type = 'showcase'
+const type = 'adventures'
 
 export default function Posts({ posts }) {
   return (
-    <Posts_layout posts={posts} href_prefix={`/${type}/`} title = {'Showcase:展示'}></Posts_layout>
+    <Posts_layout posts={posts} href_prefix={`/${type}/`} title = {'Adventure:冒险'}></Posts_layout>
   );
 }
 

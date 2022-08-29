@@ -7,7 +7,7 @@ export default function Header_Directory() {
     return (
         <div
             className={styles.header_links}>
-            <Link href="/Adventures">
+            <Link href="/Adventure">
                 <motion.div
                     className={styles.normal_background}
                     whileHover={{
