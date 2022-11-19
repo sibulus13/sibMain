@@ -42,6 +42,6 @@
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^4.7.1"
+    "@netlify/plugin-nextjs": "^4.29.0"
   }
 }
