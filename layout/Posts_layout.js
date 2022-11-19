@@ -1,19 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
+import { useState } from "react";
 
 import Filter from "components/Filter";
 import styles from "./Posts.module.css";
 import { filter_include_tags, getDates, getTags } from "lib/utils";
-import { useState } from "react";
 
-
-
-export default function Posts_layout ({posts, href_prefix, title}) {
-  console.log(posts)
+export default function Posts_layout({ posts, href_prefix, title }) {
+  // console.log(posts)
   let tags = getTags(posts);
   let dates = getDates(posts);
   posts = Array.from(posts).reverse(); //to get posts in reverse chrono order
@@ -28,7 +22,7 @@ export default function Posts_layout ({posts, href_prefix, title}) {
         <h1 className={styles.normal_color}> {title} </h1>
         {/* <br className={[styles.normal_color, styles.break_line]}></br> */}
       </div>
-      <div className={styles.post_column} key="adventurepg">
+      <div className={styles.post_column}>
         <Filter tags={tags} setTags={setCheckedState.bind(this)}></Filter>
         {posts.map((post, index) => {
           if (
@@ -57,13 +51,13 @@ export default function Posts_layout ({posts, href_prefix, title}) {
                     {post.frontMatter.thumbnailUrl && (
                       <Image
                         src={post.frontMatter.thumbnailUrl}
-                        // className={}
                         alt="thumbnail"
-                        // width="100%"
-                        // height="100%"
                         quality={100}
                         layout="fill"
                         objectFit="scale-down"
+                        // className={}
+                        // width="100%"
+                        // height="100%"
                       />
                     )}
                   </div>
@@ -76,29 +70,3 @@ export default function Posts_layout ({posts, href_prefix, title}) {
     </div>
   );
 }
-
-// export const getStaticProps = async () => {
-//   let folder = "adventures";
-//   // let folder = path.join("posts", "adventures");
-//   // console.log(folder);
-//   // let posts = []
-//   const files = fs.readdirSync(folder);
-//   // console.log(files);
-//   const posts = files.map((filename) => {
-//     const markdownWithMeta = fs.readFileSync(
-//       path.join("adventures", filename),
-//       "utf-8"
-//     );
-//     const { data: frontMatter } = matter(markdownWithMeta);
-//     return {
-//       frontMatter,
-//       slug: filename.split(".")[0],
-//     };
-//   });
-
-//   return {
-//     props: {
-//       posts,
-//     },
-//   };
-// };

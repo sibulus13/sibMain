@@ -3,10 +3,13 @@
   "version": "0.5.0",
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
+    "prebuild": "echo 'Building Sanity to public/sanityio' && cd sanityio && yarn && npx @sanity/cli build ../public/sanityio -y && echo 'Done'",
     "build": "next build",
     "postbuild": "next-on-netlify",
-    "export": "next export"
+    "export": "next export",
+    "sanity": "cd sanityio && sanity start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@hapi/bell": "^12.3.0",

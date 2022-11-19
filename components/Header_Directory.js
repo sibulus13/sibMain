@@ -33,6 +33,32 @@ export default function Header_Directory() {
                     <h2 className={styles.normal_color}> Showcase</h2>
                 </motion.div>
             </Link>
+            {/* <Link href="/Experience">
+                <motion.div
+                    className={styles.normal_background}
+                    whileHover={{
+                        scale: 1.1
+                    }}
+                    whileTap={{
+                        scale: 0.8
+                    }}
+                >
+                    <h2 className={styles.normal_color}> Experience</h2>
+                </motion.div>
+            </Link>
+            <Link href="/AboutMe">
+                <motion.div
+                    className={styles.normal_background}
+                    whileHover={{
+                        scale: 1.1
+                    }}
+                    whileTap={{
+                        scale: 0.8
+                    }}
+                >
+                    <h2 className={styles.normal_color}> About Me</h2>
+                </motion.div>
+            </Link> */}
         </div>
     )
 }

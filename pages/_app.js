@@ -8,7 +8,6 @@ import { useRef } from "react";
 
 let src =
   "/vecteezy_animation-of-fog-or-smoke-moving-on-white-background-closeup-shot_1797524.mov";
-// let src = "/compressedBackgroundVideo.mp4"
 const variants = {
   hidden: { opacity: 0, x: 0, y: -50 },
   enter: { opacity: 1, x: 0, y: 0 },
@@ -16,16 +15,16 @@ const variants = {
 };
 
 function Application({ Component, pageProps, router }) {
-  // fitbitAuthenticate()
-  console.log(router.pathname);
+  // console.log(router.pathname);
+  // console.log('router.route', router.route)
+  // console.log(pageProps)
+  // console.log(pageProps.type)
   const videoRef = useRef();
   const setPlayBack = () => {
     console.log(`setting playback`);
     videoRef.current.playbackRate = 1;
   };
-  // const video = Document.
   return (
-    // <MDXProvider>
       <div className="main">
         <Layout>
           <ErrorBoundary>
@@ -35,7 +34,7 @@ function Application({ Component, pageProps, router }) {
               initial={true}
             >
               <motion.main
-                key={router.route}
+                key={pageProps.type}
                 variants={variants} // Pass the variant object into Framer Motion
                 initial="hidden" // Set the initial state to variants.hidden
                 animate="enter" // Animated state to variants.enter
@@ -60,7 +59,6 @@ function Application({ Component, pageProps, router }) {
           Your browser does not support the video tag or format
         </video>
       </div>
-    // </MDXProvider>
   );
 }
 
