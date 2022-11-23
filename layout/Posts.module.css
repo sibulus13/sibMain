@@ -81,24 +81,7 @@
   color: white;
 }
 
-.title {
-  transform: rotateZ(270deg);
-  /* writing-mode: vertical-lr; */
-  /* text-orientation: upright; */
-  position: absolute;
-  top: 23%;
-  left: 1%;
-  margin: 0%;
-  padding: 0%;
-  border-bottom: 2px right solid black;
-  line-height: 0.4;
-}
 
-.container {
-  /* display:flex; */
-  /* flex-direction: row; */
-  /* display: grid; */
-}
 
 .break_line {
   color: black;
