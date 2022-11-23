@@ -16,11 +16,12 @@
 }
 
 .post_column {
-  padding: 5%;
+  padding: 2rem;
   display: grid;
   align-items: center;
   justify-items: center;
   gap: 4%;
+  /* top: 2%; */
   /* grid-column: 2,4; */
 }
 
