@@ -15,7 +15,7 @@ let src =
 
 function Application(props) {
   // console.log(pageProps.type)
-  console.log(`isMobileView`, props.isMobileView)
+  // console.log(`isMobileView`, props.isMobileView)
   let Component = props.Component
   let pageProps = props.pageProps
   const videoRef = useRef();
@@ -29,7 +29,8 @@ function Application(props) {
         <ErrorBoundary>
           <motion.main>
             <motion.div
-              className={props.isMobileView?styles.title_m:styles.title}
+              className={styles.title}
+              // className={props.isMobileView?styles.title_m:styles.title}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -73,14 +74,14 @@ function Application(props) {
 
 export default Application;
 
-Application.getInitialProps = async ({ ctx }) => {
-  let isMobileView = (ctx.req
-    ? ctx.req.headers['user-agent']
-    : navigator.userAgent).match(
-      /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i
-    )
-  //Returning the isMobileView as a prop to the component for further use.
-  return {
-    isMobileView: Boolean(isMobileView)
-  }
-}
+// Application.getInitialProps = async ({ ctx }) => {
+//   let isMobileView = (ctx.req
+//     ? ctx.req.headers['user-agent']
+//     : navigator.userAgent).match(
+//       /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i
+//     )
+//   //Returning the isMobileView as a prop to the component for further use.
+//   return {
+//     isMobileView: Boolean(isMobileView)
+//   }
+// }

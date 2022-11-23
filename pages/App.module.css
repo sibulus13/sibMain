@@ -2,9 +2,12 @@
     transform: rotateZ(270deg);
     position: absolute;
     top: 23%;
-    left: 1%;
+    left: 0%;
+    /* right:55%; */
     margin: 0%;
     padding: 0%;
+    white-space: nowrap;
+    overflow: hidden;
     border-bottom: 2px right solid black;
 }
 
