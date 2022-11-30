@@ -11,7 +11,7 @@ import { labelMapper } from "lib/utils";
 // import { MDXProvider } from "@mdx-js/react";
 
 let src =
-  "/vecteezy_animation-of-fog-or-smoke-moving-on-white-background-closeup-shot_1797524.mov";
+  "smoke_background.mov";
 
 function Application(props) {
   // console.log(pageProps.type)
