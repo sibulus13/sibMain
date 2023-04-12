@@ -36,7 +36,7 @@ export default function Contacts() {
             >
                 <SocialIcon
                     network='instagram'
-                    url='https://www.instagram.com/_sibulus/'
+                    url='https://www.instagram.com/mikey3i8/'
                     bgColor='lightgrey'
                     fgColor='black'
                     style={{
