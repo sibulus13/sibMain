@@ -3,10 +3,23 @@ import path from "path";
 import matter from "gray-matter";
 import Posts_layout from "layout/Posts_layout";
 import { pageLabelMapper } from "lib/constants";
+import Link from 'next/link'
 
 export default function Posts({ posts, type }) {
   return (
-    <Posts_layout posts={posts} href_prefix={`/${type}/`} title={pageLabelMapper[type]}></Posts_layout>
+    <div>
+      <Posts_layout posts={posts} href_prefix={`/${type}/`} title={pageLabelMapper[type]}></Posts_layout>
+      {
+        type == 'showcase' &&
+        <div style={{ "text-align": 'center', marginTop: '4vh',}}>
+          <span style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', padding: '4px 4px', fontSize:'24px'}}>
+          <Link href="https://chengjiemichaelhua.wixsite.com/sibulus/what-i-do">
+            Click here for my legacy projects!
+          </Link>
+          </span>
+        </div>
+      }
+    </div >
   );
 }
 
